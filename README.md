@@ -2,13 +2,13 @@
 
 ## Log in to Supervisor cluster
 
-Kubernetes and containers are developer technologies, as such almost all of the tooling assumes either Linux or macos as an operating system, that includes things like exporting environment variables and other shell commands - this guide is written to follow those guidelines and it is recommended you use a Linux VM or otherwise to ease troubleshooting. If you are running Windows you will need to adjust the commands to their Windows equivalents.
+vSphere supervisor cluster is responsilble to manage guest cluster lifecycle via CAPI. To interact with vSphere supervisor cluster, the easiest way is to leverage CLI command running on Linux or macos operating system. Should you use Windows operating system, please find correspondent commands same as this article. 
 
 ### Download the tools
 
-To interact with vSphere with Tanzu you will need to download `kubectl` and the associated vSphere CLI plugin for `kubectl`, both of these are available at the Namespace level in vCenter.
+To interact with vSphere with Tanzu you will need to download `kubectl` and the associated vSphere CLI plugin for `kubectl`. You could download the latest `kubectl` and vSphere CLI plugin `kubectl-vsphere` from github release. But we recommand to download both of these at the *Namespaces* level in vCenter.
 
-Navigate to the Namespace and look in the `Status` column for "`Link to CLI Tools`", Click `Open` and follow the instructions on the web page you are taken to to install the `kubectl` CLI and associated plugin.
+Navigate to the *Namespaces* and select supervisor cluster you created, then look in the `Status` column for "`Link to CLI Tools`", Click `Open` and follow the instructions on the web page you are taken to to install the `kubectl` CLI and associated plugin.
 
 ![Namespace with Link to CLI Tools](./img/namespace.png)
 
@@ -17,7 +17,7 @@ Navigate to the Namespace and look in the `Status` column for "`Link to CLI Tool
 To interact with our new vSphere with Tanzu supervisor cluster and begin provisioning resources we need to login first. Below we export the environment variables `SC_IP` (Supervisor Cluster IP) and `NAMESPACE` (your vSphere with Tanzu namespace name) with the information specific to our environment. You will be prompted to put in your password after running this command. It is important to ensure the user has been given RBAC permissions (`Namespaces -> Namespace -> Permissions -> Add`) on the vSphere with Tanzu namespace for you to be allowed to log in.
 
 ```sh
-export SC_IP=10.198.52.128
+export SC_IP=<10.198.52.128>
 export NAMESPACE=myles
 kubectl vsphere login --server=https://$SC_IP --vsphere-username administrator@vsphere.local --insecure-skip-tls-verify
 ```
