@@ -1,4 +1,4 @@
-# vSphere with Tanzu Quick Start Demo
+# vSphere with Tanzu Jump Start Demo
 
 ## Log in to Supervisor cluster
 
@@ -280,7 +280,7 @@ As in the busybox container from the earlier example, you now have a shell in th
 
 ```bash
 cd /usr/share/nginx/html
-curl https://raw.githubusercontent.com/vsphere-tmm/vsphere-with-tanzu-quick-start/master/site/index.html -o index.html
+curl https://raw.githubusercontent.com/jianhuabi/vsphere-with-tanzu-jumpstart/main/site/index.html -o index.html
 exit
 ```
 
@@ -303,7 +303,7 @@ For ease of demonstration (and frankly, what most people use in production) is a
 In the case of our service [svc.yaml](./manifests/svc.yaml) - it will expose port `80` on whatever load-balanced IP it is assigned by vSphere with Tanzu to port `80` on the container(s). Additionally, Kubernetes uses a `selector` of `app: nginx` to figure out what backend Pods it should load balance across, this same label can be seen in [pod.yaml](./manifests/pod.yaml) in the `metadata` section and is what creates the mapping from the `Service` to the `Pod`.
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/vsphere-tmm/vsphere-with-tanzu-quick-start/master/manifests/svc.yaml
+kubectl apply -f https://raw.githubusercontent.com/jianhuabi/vsphere-with-tanzu-jumpstart/main/manifests/svc.yaml
 ```
 
 The `Service` will spin up on the cluster, claim an IP and make it accessible to you. You can find out what IP it has been assigned by issuing the following command:
